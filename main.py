@@ -1,6 +1,6 @@
 from weatherstation import *
 
-print("Wacky Weather Station")
+print("Wacky Weather Station 1.0")
 
 while True:
     city = get_city()

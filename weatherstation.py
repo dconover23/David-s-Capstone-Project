@@ -1,4 +1,4 @@
-# weather.py: Contains all the important weather-accessing stuff.
+# weatherstation.py: Contains all the important weather-accessing stuff.
 import requests
 
 
