@@ -1,8 +1,6 @@
 # weatherstation.py: Contains all the important weather-accessing stuff.
 import requests
 
-
-# TODO: Figure out why API request is 401'ing
 api_key = "3ec252c41ca3ab7db6eb8f63408bed10"
 
 # "Base" URL to initialize with
