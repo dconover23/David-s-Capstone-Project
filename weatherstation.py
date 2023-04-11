@@ -34,14 +34,14 @@ def get_temperature(city):
         current_temperature = round((current_temp - 273.15) * 1.8 + 32)
 
         if current_temperature > 1:
-            GPIO.output(red, GPIO.HIGH)
-            GPIO.output(green, GPIO.LOW)
-            GPIO.output(blue, GPIO.LOW)
+            GPIO.output(red, 255)
+            GPIO.output(green, 0)
+            GPIO.output(blue, 0)
         else:
             # Otherwise, turn off the LED
-            GPIO.output(red, GPIO.LOW)
-            GPIO.output(green, GPIO.LOW)
-            GPIO.output(blue, GPIO.LOW)
+            GPIO.output(red, 0)
+            GPIO.output(green, 255)
+            GPIO.output(blue, 255)
 
         return current_temperature
 
