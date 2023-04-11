@@ -1,14 +1,21 @@
 # weatherstation.py: Contains all the important weather-accessing stuff.
 import requests
+import RPi.GPIO as GPIO
+
+# Pin setup
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setup(27, GPIO.OUT)
+GPIO.setup(22, GPIO.OUT)
+
+red = GPIO.PWM(17, 60)    # create object red for PWM on port 17
+green = GPIO.PWM(27, 60)      # create object green for PWM on port 27
+blue = GPIO.PWM(22, 60)      # create object blue for PWM on port 22
 
 api_key = "3ec252c41ca3ab7db6eb8f63408bed10"
 
 # "Base" URL to initialize with
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
-
-def get_city():
-    city = input("Enter a city name: ")
-    return city
 
 def get_temperature(city):
     # Complete URL for OpenWeatherMap API
@@ -25,8 +32,20 @@ def get_temperature(city):
         current_temp = main["temp"]
 
         current_temperature = round((current_temp - 273.15) * 1.8 + 32)
+
+        if current_temperature > 1:
+            GPIO.output(red, GPIO.HIGH)
+            GPIO.output(green, GPIO.LOW)
+            GPIO.output(blue, GPIO.LOW)
+        else:
+            # Otherwise, turn off the LED
+            GPIO.output(red, GPIO.LOW)
+            GPIO.output(green, GPIO.LOW)
+            GPIO.output(blue, GPIO.LOW)
+
         return current_temperature
 
+# Gets wind direction of specified city
 def get_wind_direction(city):
 
     # Complete URL for OpenWeatherMap API

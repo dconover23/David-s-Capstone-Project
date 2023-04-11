@@ -6,7 +6,7 @@ window = tk.Tk()
 tutorial = tk.Toplevel(window)
 tutorial.withdraw()
 
-window.title("Wacky Weather Station")
+window.title("Weather Station")
 window.geometry("800x480")
 window.resizable(False, False)
 
