@@ -34,13 +34,13 @@ def get_temperature(city):
         current_temperature = round((current_temp - 273.15) * 1.8 + 32)
 
         if current_temperature > 1:
-            red.start(255)
+            red.start(100)
             green.start(0)
             blue(0)
         else:
             # Otherwise, turn off the LED
             red.start(0)
-            green.start(255)
+            green.start(100)
             blue.start(0)
 
         return current_temperature
