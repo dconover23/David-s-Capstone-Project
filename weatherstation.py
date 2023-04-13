@@ -8,9 +8,9 @@ GPIO.setup(17, GPIO.OUT)
 GPIO.setup(27, GPIO.OUT)
 GPIO.setup(22, GPIO.OUT)
 
-red = GPIO.PWM(17, 60)    # create object red for PWM on port 17
+blue = GPIO.PWM(17, 60)    # create object red for PWM on port 17
 green = GPIO.PWM(27, 60)      # create object green for PWM on port 27
-blue = GPIO.PWM(22, 60)      # create object blue for PWM on port 22
+red = GPIO.PWM(22, 60)      # create object blue for PWM on port 22
 
 api_key = "3ec252c41ca3ab7db6eb8f63408bed10"
 
@@ -33,15 +33,37 @@ def get_temperature(city):
 
         current_temperature = round((current_temp - 273.15) * 1.8 + 32)
 
-        if current_temperature > 1:
+        # Initialize the pins
+        red.stop()
+        green.stop()
+        blue.stop()
+
+        # The RGB LED's color changes based on temp. Blue is very cold, red is very hot!
+        if current_temperature >= 100:
+            # Very hot, set to red
             red.start(100)
             green.start(0)
             blue.start(0)
-        else:
-            # Otherwise, turn off the LED
+        elif current_temperature < 100 and current_temperature >= 70:
+            # Warm, set to yellow
+            red.start(100)
+            green.start(100)
+            blue.start(0)
+        elif current_temperature < 70 and current_temperature >= 40:
+            # Mild, set to green
             red.start(0)
             green.start(100)
             blue.start(0)
+        elif current_temperature < 40 and current_temperature >= 20:
+            # Cold, set to blue
+            red.start(0)
+            green.start(0)
+            blue.start(100)
+        else:
+            # Very cold, set to white
+            red.start(100)
+            green.start(100)
+            blue.start(100)
 
         return current_temperature
 
