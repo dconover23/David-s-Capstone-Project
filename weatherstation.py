@@ -12,6 +12,10 @@ blue = GPIO.PWM(17, 60)    # create object red for PWM on port 17
 green = GPIO.PWM(27, 60)      # create object green for PWM on port 27
 red = GPIO.PWM(22, 60)      # create object blue for PWM on port 22
 
+# Pin setup for wind dir servo
+GPIO.setup(26, GPIO.OUT)
+servo = GPIO.PWM(26, 50)
+
 api_key = "3ec252c41ca3ab7db6eb8f63408bed10"
 
 # "Base" URL to initialize with
@@ -85,5 +89,17 @@ def get_wind_direction(city):
         wind_direction_degrees = wind["deg"]
         wind_direction = wind_direction_degrees
 
+        # Reset servo
+        servo.start(0)
+
+        # Set servo position based on wind direction
+        if 45 <= wind_direction < 135:
+            servo.ChangeDutyCycle(7.5)  # 90 degrees (east)
+        elif 135 <= wind_direction < 225:
+            servo.ChangeDutyCycle(12.5)  # 180 degrees (south)
+        elif 225 <= wind_direction < 315:
+            servo.ChangeDutyCycle(2.5)  # 0 degrees (north)
+        else:
+            servo.ChangeDutyCycle(17.5)  # 270 degrees (west)
 
     return wind_direction
