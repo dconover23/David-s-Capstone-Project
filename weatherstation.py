@@ -90,6 +90,8 @@ def get_wind_direction(city):
         wind_direction_degrees = wind["deg"]
         wind_direction = wind_direction_degrees
 
+        servo.start(0)
+
         # Set servo position based on wind direction
         if 45 <= wind_direction < 135:
             servo.ChangeDutyCycle(7.5)  # 90 degrees (east)
