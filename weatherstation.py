@@ -72,9 +72,9 @@ def get_temperature(city):
 
         return current_temperature
 
+
 # Gets wind direction of specified city
 def get_wind_direction(city):
-
     # Complete URL for OpenWeatherMap API
     complete_url = base_url + "appid=" + api_key + "&q=" + city
 
@@ -89,17 +89,21 @@ def get_wind_direction(city):
         wind = result["wind"]
         wind_direction_degrees = wind["deg"]
         wind_direction = wind_direction_degrees
-
-        servo.start(0)
-
-        # Set servo position based on wind direction
-        if 45 <= wind_direction < 135:
-            servo.ChangeDutyCycle(7.5)  # 90 degrees (east)
-        elif 135 <= wind_direction < 225:
-            servo.ChangeDutyCycle(12.5)  # 180 degrees (south)
-        elif 225 <= wind_direction < 315:
-            servo.ChangeDutyCycle(0)  # 0 degrees (north)
-        else:
-            servo.ChangeDutyCycle(17.5)  # 270 degrees (west)
+        set_servo_position(wind_direction)
+    else:
+        wind_direction = None
 
     return wind_direction
+
+
+def set_servo_position(wind_direction):
+    # Set servo position based on wind direction
+    if 45 <= wind_direction < 135:
+        servo.ChangeDutyCycle(7.5)  # 90 degrees (east)
+    elif 135 <= wind_direction < 225:
+        servo.ChangeDutyCycle(12.5)  # 180 degrees (south)
+    elif 225 <= wind_direction < 315:
+        servo.ChangeDutyCycle(0)  # 0 degrees (north)
+    else:
+        servo.ChangeDutyCycle(17.5)  # 270 degrees (west)
+
