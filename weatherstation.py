@@ -96,6 +96,7 @@ def get_wind_direction(city):
     return wind_direction
 
 def set_servo_position(wind_direction):
+    servo.start(0)
     # Set servo position based on wind direction
     if 22.5 <= wind_direction < 67.5:
         servo.ChangeDutyCycle(6.25)  # 45 degrees (northeast)
