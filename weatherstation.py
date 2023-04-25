@@ -1,6 +1,7 @@
 # weatherstation.py: Contains all the important weather-accessing stuff.
 import requests
 import RPi.GPIO as GPIO
+from time import sleep
 
 # Pin setup
 GPIO.setmode(GPIO.BCM)
@@ -90,7 +91,9 @@ def get_wind_direction(city):
         wind_direction = wind_direction_degrees
 
         # Reset servo
-        servo.start(0)
+        servo.ChangeDutyCycle(0)
+
+        sleep(2000)
 
         # Set servo position based on wind direction
         if 45 <= wind_direction < 135:
@@ -98,7 +101,7 @@ def get_wind_direction(city):
         elif 135 <= wind_direction < 225:
             servo.ChangeDutyCycle(12.5)  # 180 degrees (south)
         elif 225 <= wind_direction < 315:
-            servo.ChangeDutyCycle(2.5)  # 0 degrees (north)
+            servo.ChangeDutyCycle(0)  # 0 degrees (north)
         else:
             servo.ChangeDutyCycle(17.5)  # 270 degrees (west)
 
