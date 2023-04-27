@@ -1,7 +1,6 @@
 # weatherstation.py: Contains all the important weather-accessing stuff.
 import requests
 import RPi.GPIO as GPIO
-from time import sleep
 
 # Pin setup
 GPIO.setmode(GPIO.BCM)
@@ -102,12 +101,13 @@ def get_wind_direction(city):
     # Split into the available directions
     degrees = degrees * len(directions) / 360
 
-    # Round it
+    # Round it to avoid weird decimal answers
     degrees = round(degrees)
 
     print(directions[degrees])
 
-    return wind_direction
+    return degrees
+
 
 
 
