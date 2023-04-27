@@ -104,7 +104,7 @@ def get_wind_direction(city):
     # Round it to avoid weird decimal answers
     degrees = round(degrees)
 
-    print(directions[degrees])
+    degrees = directions[degrees]
 
     return degrees
 
