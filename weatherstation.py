@@ -122,7 +122,5 @@ def get_wind_direction(city):
     else:
         wind_direction = None
 
-    return wind_direction
-
     return degrees
 
