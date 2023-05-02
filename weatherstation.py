@@ -76,8 +76,6 @@ def get_temperature(city):
 # TODO: Hook the servo up to this
 def get_wind_direction(city):
 
-    GPIO.cleanup()
-
     # Complete URL for OpenWeatherMap API
     complete_url = base_url + "appid=" + api_key + "&q=" + city
 
@@ -104,21 +102,29 @@ def get_wind_direction(city):
         degrees = directions[degrees]
 
         if degrees == "north": # north
-            servo.start(17)
+            servo.ChangeDutyCycle(17)
+            print("got here")
         elif degrees == "northeast": # northeast
             servo.ChangeDutyCycle(17)
+            print("got here 2")
         elif degrees == "east": # east
             servo.ChangeDutyCycle(17)
+            print("got here 3")
         elif degrees == "southeast": # southeast
             servo.ChangeDutyCycle(17)
+            print("got here 4")
         elif degrees == "south": # south
             servo.ChangeDutyCycle(17)
+            print("got here 5")
         elif degrees == "southwest": # southwest
             servo.ChangeDutyCycle(17)
+            print("got here 6")
         elif degrees == "west": # west
             servo.ChangeDutyCycle(17)
+            print("got here 7")
         elif degrees == "northwest": # northwest
             servo.ChangeDutyCycle(17)
+            print("got here 8")
 
         else:
             wind_direction = None
