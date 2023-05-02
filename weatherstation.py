@@ -75,6 +75,9 @@ def get_temperature(city):
 # Gets wind direction of specified city
 # TODO: Hook the servo up to this
 def get_wind_direction(city):
+
+    GPIO.cleanup()
+
     # Complete URL for OpenWeatherMap API
     complete_url = base_url + "appid=" + api_key + "&q=" + city
 
@@ -90,7 +93,7 @@ def get_wind_direction(city):
         wind_direction = wind_direction_degrees
         degrees = wind_direction
 
-        directions = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest']
+        directions = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"]
 
         # Split into the available directions
         degrees = degrees * len(directions) / 360
@@ -100,22 +103,22 @@ def get_wind_direction(city):
 
         degrees = directions[degrees]
 
-        if degrees == directions[0]: # north
+        if degrees == "north": # north
             servo.start(17)
-        elif degrees == directions[1]: # northeast
-            pass
-        elif degrees == directions[2]: # east
-            pass
-        elif degrees == directions[3]: # southeast
-            pass
-        elif degrees == directions[4]: # south
-            pass
-        elif degrees == directions[5]: # southwest
-            servo.start(17)
-        elif degrees == directions[6]: # west
-            pass
-        elif degrees == directions[7]: # northwest
-            pass
+        elif degrees == "northeast": # northeast
+            servo.ChangeDutyCycle(17)
+        elif degrees == "east": # east
+            servo.ChangeDutyCycle(17)
+        elif degrees == "southeast": # southeast
+            servo.ChangeDutyCycle(17)
+        elif degrees == "south": # south
+            servo.ChangeDutyCycle(17)
+        elif degrees == "southwest": # southwest
+            servo.ChangeDutyCycle(17)
+        elif degrees == "west": # west
+            servo.ChangeDutyCycle(17)
+        elif degrees == "northwest": # northwest
+            servo.ChangeDutyCycle(17)
 
         else:
             wind_direction = None
