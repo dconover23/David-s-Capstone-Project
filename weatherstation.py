@@ -84,48 +84,45 @@ def get_wind_direction(city):
     # The data we get back from the API
     result = response.json()
 
-    # Get wind direction for servo
     if result["cod"] != "404":
         wind = result["wind"]
         wind_direction_degrees = wind["deg"]
         wind_direction = wind_direction_degrees
+        degrees = wind_direction
+
+        directions = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest']
+
+        # Split into the available directions
+        degrees = degrees * len(directions) / 360
+
+        # Round it to avoid weird decimal answers
+        degrees = round(degrees)
+
+        degrees = directions[degrees]
+
+        servo.ChangeDutyCycle(17.4)
+
+        # if degrees == directions[0]: # north
+        # servo.ChangeDutyCycle(0)
+        # elif degrees == directions[1]: # northeast
+        # pass
+        # elif degrees == directions[2]: # east
+        # pass
+        # elif degrees == directions[3]: # southeast
+        # pass
+        # elif degrees == directions[4]: # south
+        # pass
+        # elif degrees == directions[5]: # southwest
+        # pass
+        # elif degrees == directions[6]: # west
+        # pass
+        # elif degrees == directions[7]: # northwest
+        # pass
+
     else:
         wind_direction = None
 
-    # Convert wind degrees to a compass direction so the servo can point
-    # https://stackoverflow.com/questions/61077150/converting-wind-direction-from-degrees-to-text
-    degrees = wind_direction
-
-    directions = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest']
-
-    # Split into the available directions
-    degrees = degrees * len(directions) / 360
-
-    # Round it to avoid weird decimal answers
-    degrees = round(degrees)
-
-    degrees = directions[degrees]
-
-    servo.ChangeDutyCycle(17.4)
-
-    #if degrees == directions[0]: # north
-        #servo.ChangeDutyCycle(0)
-    #elif degrees == directions[1]: # northeast
-        #pass
-    #elif degrees == directions[2]: # east
-        #pass
-    #elif degrees == directions[3]: # southeast
-        #pass
-    #elif degrees == directions[4]: # south
-        #pass
-    #elif degrees == directions[5]: # southwest
-        #pass
-    #elif degrees == directions[6]: # west
-        #pass
-    #elif degrees == directions[7]: # northwest
-        #pass
-
-
+    return wind_direction
 
     return degrees
 
