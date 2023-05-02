@@ -3,18 +3,18 @@ import requests
 import RPi.GPIO as GPIO
 
 # Pin setup
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(17, GPIO.OUT)
-GPIO.setup(27, GPIO.OUT)
-GPIO.setup(22, GPIO.OUT)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
+GPIO.setup(15, GPIO.OUT)
 
-blue = GPIO.PWM(17, 60)    # create object red for PWM on port 17
-green = GPIO.PWM(27, 60)      # create object green for PWM on port 27
-red = GPIO.PWM(22, 60)      # create object blue for PWM on port 22
+blue = GPIO.PWM(11, 60)    # create object red for PWM on port 17
+green = GPIO.PWM(13, 60)      # create object green for PWM on port 27
+red = GPIO.PWM(15, 60)      # create object blue for PWM on port 22
 
 # Pin setup for wind dir servo
-GPIO.setup(6, GPIO.OUT)
-servo = GPIO.PWM(6, 50)
+GPIO.setup(31, GPIO.OUT)
+servo = GPIO.PWM(31, 50)
 
 api_key = "3ec252c41ca3ab7db6eb8f63408bed10"
 
@@ -101,7 +101,7 @@ def get_wind_direction(city):
         degrees = directions[degrees]
 
         if degrees == directions[0]: # north
-            servo.ChangeDutyCycle(17)
+            servo.start(17)
         elif degrees == directions[1]: # northeast
             pass
         elif degrees == directions[2]: # east
@@ -111,7 +111,7 @@ def get_wind_direction(city):
         elif degrees == directions[4]: # south
             pass
         elif degrees == directions[5]: # southwest
-            servo.ChangeDutyCycle(15)
+            servo.start(17)
         elif degrees == directions[6]: # west
             pass
         elif degrees == directions[7]: # northwest
