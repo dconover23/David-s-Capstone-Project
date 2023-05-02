@@ -13,8 +13,8 @@ green = GPIO.PWM(27, 60)      # create object green for PWM on port 27
 red = GPIO.PWM(22, 60)      # create object blue for PWM on port 22
 
 # Pin setup for wind dir servo
-GPIO.setup(26, GPIO.OUT)
-servo = GPIO.PWM(26, 50)
+GPIO.setup(6, GPIO.OUT)
+servo = GPIO.PWM(6, 50)
 
 api_key = "3ec252c41ca3ab7db6eb8f63408bed10"
 
