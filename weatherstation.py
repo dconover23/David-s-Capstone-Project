@@ -106,8 +106,26 @@ def get_wind_direction(city):
 
     degrees = directions[degrees]
 
+    servo.ChangeDutyCycle(17.4)
+
+    #if degrees == directions[0]: # north
+        #servo.ChangeDutyCycle(0)
+    #elif degrees == directions[1]: # northeast
+        #pass
+    #elif degrees == directions[2]: # east
+        #pass
+    #elif degrees == directions[3]: # southeast
+        #pass
+    #elif degrees == directions[4]: # south
+        #pass
+    #elif degrees == directions[5]: # southwest
+        #pass
+    #elif degrees == directions[6]: # west
+        #pass
+    #elif degrees == directions[7]: # northwest
+        #pass
+
+
+
     return degrees
-
-
-
 

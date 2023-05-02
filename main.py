@@ -48,7 +48,7 @@ def getWeatherWithEntry():
         windDirection = weatherstation.get_wind_direction(user_input)
         windDirDisplay.set(windDirection)
         windDir_label = tk.Label(window, text="")
-        windDir_label = tk.Label(window, text=f"{windDirDisplay.get()} is the current wind direction (in degrees)")
+        windDir_label = tk.Label(window, text=f" The wind is blowing {windDirDisplay.get()}")
 
         weather_label.place(x=500, y=120)
         windDir_label.place(x=500, y=160)
