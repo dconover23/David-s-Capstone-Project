@@ -99,7 +99,11 @@ def get_wind_direction(city):
         # Round it to avoid weird decimal answers
         degrees = round(degrees)
 
-        degrees = directions[degrees]
+        if 0 <= degrees < len(directions):
+            degrees = directions[degrees]
+        else:
+            degrees = None
+
 
         if degrees == "north": # north
             servo.ChangeDutyCycle(3.25)
