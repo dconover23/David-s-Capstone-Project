@@ -12,9 +12,9 @@ blue = GPIO.PWM(11, 60)    # create object red for PWM on port 17
 green = GPIO.PWM(13, 60)      # create object green for PWM on port 27
 red = GPIO.PWM(15, 60)      # create object blue for PWM on port 22
 
-# Pin setup for wind dir servo
+# Pin setup for wind speed motor
 GPIO.setup(31, GPIO.OUT)
-servo = GPIO.PWM(31, 50)
+motor = GPIO.PWM(31, 50)
 
 api_key = "3ec252c41ca3ab7db6eb8f63408bed10"
 
@@ -73,7 +73,7 @@ def get_temperature(city):
 
 
 # Gets wind direction of specified city
-# TODO: Hook the servo up to this
+# TODO: Hook the motor up to this
 def get_wind_direction(city):
 
     # Complete URL for OpenWeatherMap API
@@ -90,6 +90,7 @@ def get_wind_direction(city):
         wind_direction_degrees = wind["deg"]
         wind_direction = wind_direction_degrees
         degrees = wind_direction
+        GPIO.output(31, GPIO.HIGH)
 
         directions = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"]
 
@@ -103,35 +104,6 @@ def get_wind_direction(city):
             degrees = directions[degrees]
         else:
             degrees = None
-
-
-        if degrees == "north": # north
-            servo.ChangeDutyCycle(3.25)
-            print("got here")
-        elif degrees == "northeast": # northeast
-            servo.ChangeDutyCycle(3.25)
-            print("got here 2")
-        elif degrees == "east": # east
-            servo.ChangeDutyCycle(2.4)
-            print("got here 3")
-        elif degrees == "southeast": # southeast
-            servo.ChangeDutyCycle(2.1)
-            print("got here 4")
-        elif degrees == "south": # south
-            servo.ChangeDutyCycle(2.0)
-            print("got here 5")
-        elif degrees == "southwest": # southwest
-            servo.ChangeDutyCycle(3.5)
-            print("got here 6")
-        elif degrees == "west": # west
-            servo.ChangeDutyCycle(3.6)
-            print("got here 7")
-        elif degrees == "northwest": # northwest
-            servo.ChangeDutyCycle(3.7)
-            print("got here 8")
-
-        else:
-            wind_direction = None
 
         return degrees
 
