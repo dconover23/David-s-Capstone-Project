@@ -53,6 +53,7 @@ def get_temperature(city):
             red.start(100)
             green.start(100)
             blue.start(0)
+            motor.start(30)
         elif current_temperature < 70 and current_temperature >= 40:
             # Mild, set to green
             red.start(0)
@@ -90,7 +91,6 @@ def get_wind_direction(city):
         wind_direction_degrees = wind["deg"]
         wind_direction = wind_direction_degrees
         degrees = wind_direction
-        GPIO.output(31, GPIO.HIGH)
 
         directions = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"]
 
