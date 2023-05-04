@@ -102,28 +102,28 @@ def get_wind_direction(city):
         degrees = directions[degrees]
 
         if degrees == "north": # north
-            servo.ChangeDutyCycle(17)
+            servo.ChangeDutyCycle(3.25)
             print("got here")
         elif degrees == "northeast": # northeast
-            servo.ChangeDutyCycle(17)
+            servo.ChangeDutyCycle(3.25)
             print("got here 2")
         elif degrees == "east": # east
-            servo.ChangeDutyCycle(17)
+            servo.ChangeDutyCycle(2.4)
             print("got here 3")
         elif degrees == "southeast": # southeast
-            servo.ChangeDutyCycle(17)
+            servo.ChangeDutyCycle(2.1)
             print("got here 4")
         elif degrees == "south": # south
-            servo.ChangeDutyCycle(17)
+            servo.ChangeDutyCycle(2.0)
             print("got here 5")
         elif degrees == "southwest": # southwest
-            servo.ChangeDutyCycle(17)
+            servo.ChangeDutyCycle(3.5)
             print("got here 6")
         elif degrees == "west": # west
-            servo.ChangeDutyCycle(17)
+            servo.ChangeDutyCycle(3.6)
             print("got here 7")
         elif degrees == "northwest": # northwest
-            servo.ChangeDutyCycle(17)
+            servo.ChangeDutyCycle(3.7)
             print("got here 8")
 
         else:
