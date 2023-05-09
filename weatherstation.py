@@ -4,9 +4,9 @@ import RPi.GPIO as GPIO
 
 # Pin setup
 
-in1 = 31
-in2 = 21
-en = 19
+in1 = 25
+in2 = 23
+en = 31
 
 # LED
 GPIO.setmode(GPIO.BOARD)
@@ -18,8 +18,6 @@ GPIO.setup(15, GPIO.OUT)
 GPIO.setup(in1,GPIO.OUT)
 GPIO.setup(in2,GPIO.OUT)
 GPIO.setup(en,GPIO.OUT)
-GPIO.output(in1,GPIO.LOW)
-GPIO.output(in2,GPIO.LOW)
 motor = GPIO.PWM(en,1000)
 
 
