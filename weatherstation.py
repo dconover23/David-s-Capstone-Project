@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 # Pin setup
 
 in1 = 29
-in2 = 23
+in2 = 23 
 en = 31
 
 # LED
@@ -111,6 +111,7 @@ def get_wind_direction(city):
 
         if 0 <= degrees < len(directions):
             degrees = directions[degrees]
+            
             GPIO.output(in1,GPIO.HIGH)
             GPIO.output(in2,GPIO.LOW)
         else:
