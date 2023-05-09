@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 
 # Pin setup
 
-in1 = 25
+in1 = 27
 in2 = 23
 en = 31
 
