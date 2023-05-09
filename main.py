@@ -2,7 +2,8 @@ import tkinter as tk
 import weatherstation
 
 window = tk.Tk()
-# Tutorial shouldn't be opened unless the user asks for it
+# Tutorial shouldn't be opened unless the user asks for it.
+# Note: Didn't have time to get this working. Should still work if you create a button for it.
 tutorial = tk.Toplevel(window)
 tutorial.withdraw()
 

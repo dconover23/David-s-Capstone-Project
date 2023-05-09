@@ -111,7 +111,8 @@ def get_wind_direction(city):
 
         if 0 <= degrees < len(directions):
             degrees = directions[degrees]
-            
+
+            # Test motor
             GPIO.output(in1,GPIO.HIGH)
             GPIO.output(in2,GPIO.LOW)
         else:
