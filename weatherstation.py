@@ -3,18 +3,30 @@ import requests
 import RPi.GPIO as GPIO
 
 # Pin setup
+
+in1 = 31
+in2 = 21
+en = 19
+
+# LED
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.OUT)
 GPIO.setup(13, GPIO.OUT)
 GPIO.setup(15, GPIO.OUT)
 
-blue = GPIO.PWM(11, 60)    # create object red for PWM on port 17
-green = GPIO.PWM(13, 60)      # create object green for PWM on port 27
-red = GPIO.PWM(15, 60)      # create object blue for PWM on port 22
+# Motor
+GPIO.setup(in1,GPIO.OUT)
+GPIO.setup(in2,GPIO.OUT)
+GPIO.setup(en,GPIO.OUT)
+GPIO.output(in1,GPIO.LOW)
+GPIO.output(in2,GPIO.LOW)
+motor = GPIO.PWM(en,1000)
 
-# Pin setup for wind speed motor
-GPIO.setup(31, GPIO.OUT)
-motor = GPIO.PWM(31, 50)
+
+# Pin setup for LED
+blue = GPIO.PWM(11, 60)    
+green = GPIO.PWM(13, 60)      
+red = GPIO.PWM(15, 60)      
 
 api_key = "3ec252c41ca3ab7db6eb8f63408bed10"
 
@@ -53,7 +65,6 @@ def get_temperature(city):
             red.start(100)
             green.start(100)
             blue.start(0)
-            motor.start(30)
         elif current_temperature < 70 and current_temperature >= 40:
             # Mild, set to green
             red.start(0)
@@ -102,6 +113,8 @@ def get_wind_direction(city):
 
         if 0 <= degrees < len(directions):
             degrees = directions[degrees]
+            GPIO.output(in1,GPIO.HIGH)
+            GPIO.output(in2,GPIO.LOW)
         else:
             degrees = None
 
