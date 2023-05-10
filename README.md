@@ -1,4 +1,7 @@
 # Wacky Weather Station - A Shoebox Project For The Future By David Conover (5/9/2023)
+
+Presentation: https://docs.google.com/presentation/d/1bDNMUpXly-4FXXl3PERts_QTuHoxXzwELpSSzvRn4lY/edit
+
 By now, all modern Weather Data rests squarely in the hands of Big Weather. Conglomerates such as The Weather Channel lord this data over the heads of us peasants, ensuring that only they have the power to tell you what’s happening right outside your door. The comparisons with George Orwell’s 1984 are easy to draw.
 
 So it has fallen upon the shoulders of our hero, David Conover, who writes in the third person for the purpose of weaving an epic tale, to save us all from Big Weather. We need a solution that is accessible to the common man and woman. Thus, the WWW was born.
