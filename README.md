@@ -1,5 +1,3 @@
-TODO - Finish me!
-
 # Wacky Weather Station - A Shoebox Project For The Future By David Conover (5/9/2023)
 By now, all modern Weather Data rests squarely in the hands of Big Weather. Conglomerates such as The Weather Channel lord this data over the heads of us peasants, ensuring that only they have the power to tell you what’s happening right outside your door. The comparisons with George Orwell’s 1984 are easy to draw.
 
