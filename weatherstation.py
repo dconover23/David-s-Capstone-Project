@@ -26,7 +26,8 @@ blue = GPIO.PWM(11, 60)
 green = GPIO.PWM(13, 60)      
 red = GPIO.PWM(15, 60)      
 
-api_key = "3ec252c41ca3ab7db6eb8f63408bed10"
+# You need your own API key from OpenWeatherMap. Google "OpenWeatherMap API key".
+api_key = "INSERT-YOUR-OWN-API-KEY-HERE"
 
 # "Base" URL to initialize with
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
